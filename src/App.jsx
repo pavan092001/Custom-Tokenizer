@@ -35,32 +35,57 @@ function App() {
   };
 
   // Decode handler
-  const handleDecode = () => {
+//   const handleDecode = () => {
+//   try {
+//     console.log("2D Array Raw Input:", decodeInput);
+
+//     // Convert string input to a real array
+//     const tokenArray = JSON.parse(decodeInput);
+
+//     if (!Array.isArray(tokenArray)) {
+//       throw new Error("Input must be an array");
+//     }
+
+//     // Decode each element
+//     const result2 = tokenArray.map((item) => {
+//       if (Array.isArray(item)) {
+//         return decodeTokens(item); // decode subarray
+//       }
+//       return decodeTokens([item]); // decode single token
+//     });
+
+//     console.log("Decoded Parts:", result2);
+
+//     // Join all decoded parts into one string
+//     const finalDecodedText = result2.join(" ");
+//     console.log("Final Decoded:", finalDecodedText);
+
+//     setDecodedText(finalDecodedText);
+//   } catch (e) {
+//     console.error(e);
+//     alert(
+//       "Invalid token array format. Must be JSON like: [[75, 61], [76, 37, 49], 129]"
+//     );
+//   }
+// };
+
+const handleDecode = () => {
   try {
     console.log("2D Array Raw Input:", decodeInput);
 
-    // Convert string input to a real array
+    // Convert string input to actual array
     const tokenArray = JSON.parse(decodeInput);
 
     if (!Array.isArray(tokenArray)) {
       throw new Error("Input must be an array");
     }
 
-    // Decode each element
-    const result2 = tokenArray.map((item) => {
-      if (Array.isArray(item)) {
-        return decodeTokens(item); // decode subarray
-      }
-      return decodeTokens([item]); // decode single token
-    });
+    // Decode in one go using your decodeTokens function
+    const finalDecodedText = decodeTokens(tokenArray);
 
-    console.log("Decoded Parts:", result2);
-
-    // Join all decoded parts into one string
-    const finalDecodedText = result2.join(" ");
     console.log("Final Decoded:", finalDecodedText);
-
     setDecodedText(finalDecodedText);
+
   } catch (e) {
     console.error(e);
     alert(
@@ -68,6 +93,7 @@ function App() {
     );
   }
 };
+
 
 
 

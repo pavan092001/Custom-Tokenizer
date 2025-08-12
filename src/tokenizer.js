@@ -53,35 +53,6 @@ function encodeWithSubstrings(word) {
   return result;
 }
 
-// function encodeWithSubstrings(word) {
-//   const result = [];
-//   let i = 0;
-//   while (i < word.length) {
-//     let found = false;
-
-//     for (let j = word.length; j > i; j--) {
-//       const sub = word.slice(i, j);
-
-//       if (vocab[sub]) {
-//         tokenMap[sub] = vocab[sub];
-//         result.push(vocab[sub]);
-//         i = j;
-//         found = true;
-//         break;
-//       }
-//     }
-
-//     if (!found) {
-//       const char = word[i];
-//       tokenMap[char] = vocab[char];
-//       result.push(vocab[char] || `<UNK:${char}>`);
-//       i++;
-//     }
-//   }
-
-//   return result;
-// }
-
 function buildReverseVocab(vocab) {
   const reverseVocab = {};
   for (const [key, value] of Object.entries(vocab)) {
@@ -90,7 +61,7 @@ function buildReverseVocab(vocab) {
   return reverseVocab;
 }
 
-export function decodeTokens(tokenArray, vocab) {
+export function decodeTokens(tokenArray) {
   const reverseVocab = buildReverseVocab(vocab);
   const decodedWords = [];
   for (const token of tokenArray) {
