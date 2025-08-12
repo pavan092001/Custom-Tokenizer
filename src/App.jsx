@@ -2,10 +2,9 @@ import { useState } from "react";
 import { tokenize, decodeTokens, splitText, getTokenMap } from "./tokenizer";
 import "./App.css";
 
+
 function App() {
-  const [inputText, setInputText] = useState(
-    "My Name is Zikriya call me sick apavanxy ?/?/?/??"
-  );
+  const [inputText, setInputText] = useState("");
   const [tokens, setTokens] = useState([]);
   const [tokenPairs, setTokenPairs] = useState([]);
   const [tokenMap, setTokenMap] = useState({});
@@ -35,40 +34,6 @@ function App() {
   };
 
   // Decode handler
-//   const handleDecode = () => {
-//   try {
-//     console.log("2D Array Raw Input:", decodeInput);
-
-//     // Convert string input to a real array
-//     const tokenArray = JSON.parse(decodeInput);
-
-//     if (!Array.isArray(tokenArray)) {
-//       throw new Error("Input must be an array");
-//     }
-
-//     // Decode each element
-//     const result2 = tokenArray.map((item) => {
-//       if (Array.isArray(item)) {
-//         return decodeTokens(item); // decode subarray
-//       }
-//       return decodeTokens([item]); // decode single token
-//     });
-
-//     console.log("Decoded Parts:", result2);
-
-//     // Join all decoded parts into one string
-//     const finalDecodedText = result2.join(" ");
-//     console.log("Final Decoded:", finalDecodedText);
-
-//     setDecodedText(finalDecodedText);
-//   } catch (e) {
-//     console.error(e);
-//     alert(
-//       "Invalid token array format. Must be JSON like: [[75, 61], [76, 37, 49], 129]"
-//     );
-//   }
-// };
-
 const handleDecode = () => {
   try {
     console.log("2D Array Raw Input:", decodeInput);
@@ -100,10 +65,17 @@ const handleDecode = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center w-full bg-gray-900 text-white p-6 font-sans">
-      <h1 className="text-3xl font-bold mb-8 text-center text-blue-400">
+      <div className="flex justify-around">
+        <h1 className="text-3xl font-bold mb-8 text-center text-blue-400">
         Custom Tokenizer
       </h1>
+      <a target="blank" href="https://github.com/pavan092001/Custom-Tokenizer" className="ml-5 mb-8 text-center text-blue-400"><img
+        src="./github.png"
+        alt="GitHub Logo"
+        className="w-8 h-8"
+      /> </a>
 
+      </div>
       {/* Encode Section */}
       <section className="mb-12 bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-700 w-3/4 max-w-4xl">
         <h2 className="text-xl font-semibold mb-4 text-green-400">
@@ -111,6 +83,7 @@ const handleDecode = () => {
         </h2>
         <textarea
           value={inputText}
+          placeholder="Enter the text"
           onChange={(e) => setInputText(e.target.value)}
           rows="4"
           className="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:border-green-500 text-white"
